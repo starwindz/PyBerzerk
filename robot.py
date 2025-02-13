@@ -221,7 +221,7 @@ class Robot(AnimateObj):
             elif deltaY > 0:
                 pattern = "south"
 
-            if pattern <> self.patternkey:
+            if pattern != self.patternkey:
                 self.setpattern(pattern)
 
             # fire laser only if cooldown has been 0.6 secs
@@ -315,10 +315,10 @@ class Robot(AnimateObj):
         elif self.patternkey in ("north","south"):
             x, y = {"N":(8,-20),"S":(8,6)}.get(direction,(0,0))
 
-        if (x <> 0) or (y <> 0):
+        if (x != 0) or (y != 0):
             bullet = RobotBullet(self.color, direction, self.rect.centerx + x, self.rect.centery + y, self.imagefiles['bullets'] )
-            if bullet <> None:
-                if self.cbRobot <> None:
+            if bullet != None:
+                if self.cbRobot != None:
                     self.cbRobot("FIRE", bullet)
 
     def draw(self):

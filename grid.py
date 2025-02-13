@@ -24,7 +24,9 @@ class Cell(object):
 
         self.screenX = MAZE_XMIN-4 + x*16
         self.screenY = MAZE_YMIN+8 + y*22
-
+        
+    def __lt__(self, other):
+        return self.f < other.f
 
 """
 0: empty cell
@@ -90,14 +92,14 @@ class Grid(object):
                 pass
 
     def getScreenCoor(self,x,y):
-        cell = self.gridcells[x * self.height + y]
+        cell = self.gridcells[int(x) * self.height + int(y)]
         return cell.screenX, cell.screenY
 
     def getCellCoor(self,x,y):
         return (x - (MAZE_XMIN-4))/16, (y - (MAZE_YMIN+8))/22
 
     def getCell(self,x,y):
-        return self.gridcells[x * self.height + y]
+        return self.gridcells[int(x) * self.height + int(y)]
 
     def getQuadrant(self,x,y):
         return int((x-MAZE_XMIN)/BORDER_HSEGMENT), int((y-MAZE_YMIN)/BORDER_VSEGMENT)
@@ -182,10 +184,10 @@ class AStar(object):
         @returns cell
         """
         try:
-            cell = self.cells[x * self.grid_height + y]
-        except IndexError, message:
-            print(x,y)
-            raise SystemExit, message
+            cell = self.cells[int(x) * self.grid_height + int(y)]
+        except IndexError as message:
+            print('in get_cell: ', 'x = ', int(x), ' y = ', int(y), 'self.grid_height = ', self.grid_height)
+            raise SystemExit(message)
         return cell
 
     def get_adjacent_cells(self, cell):
@@ -211,7 +213,8 @@ class AStar(object):
         while cell.parent is not self.start:
             cell = cell.parent
             if cell is None:
-                pass
+                #pass
+                continue
             path.append((cell.x, cell.y))
 
         path.append((self.start.x, self.start.y))
@@ -232,7 +235,7 @@ class AStar(object):
         cell = self.end
         while cell.parent is not self.start:
             cell = cell.parent
-            print 'path: cell: %d,%d' % (cell.x, cell.y)
+            print ('path: cell: %d,%d' % (cell.x, cell.y))
 
 
     def solve(self):
@@ -264,3 +267,4 @@ class AStar(object):
                         self.update_cell(adj_cell, cell)
                         # add adj cell to open list
                         heapq.heappush(self.opened, (adj_cell.f, adj_cell))
+

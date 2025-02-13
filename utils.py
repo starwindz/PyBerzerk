@@ -78,7 +78,7 @@ def screenMazeClear(screen):
 # NOTE: scroll opposite direction players exits, i.e. exit E, scroll W
 def screenScroll(screen, exit, color):
     # amount to shift image for scroll
-    dx, dy, iterations = {"N":(0,10,SCREEN_HEIGHT/10), "S":(0,-10, SCREEN_HEIGHT/10), "W":(10,0,SCREEN_WIDTH/10), "E":(-10,0,SCREEN_WIDTH/10)}[exit]
+    dx, dy, iterations = {"N":(0,10,int(SCREEN_HEIGHT/10)), "S":(0,-10, int(SCREEN_HEIGHT/10)), "W":(10,0,int(SCREEN_WIDTH/10)), "E":(-10,0,int(SCREEN_WIDTH/10))}[exit]
 
     # screen shot
     bg = screen.subsurface(0,0,SCREEN_WIDTH, BORDERTHICKNESS + MAZE_HEIGHT + WALLTHICKNESS*4).convert()
@@ -260,7 +260,7 @@ def getHighScores():
 
     #test if file exists
     try:
-        with open('highscores.txt', 'r') as file:
+        with open('highscores.txt', 'rb') as file:
             highscores = pickle.load(file)
             high_scores = sorted(highscores, key=itemgetter(1), reverse=True)[:10]
     except IOError as e:
@@ -369,7 +369,7 @@ def getInitialCoor(font,x,y):
     for i,letter in lst:
         _w,_h = font.size(letter)
         if i in [0,2,4]:
-            coor[i/2] = (_x,y+h,_w,_h)
+            coor[int(i/2)] = (_x,y+h,_w,_h)
             _x += _w
         else:
             _x += _w/2
@@ -385,7 +385,7 @@ def topScores(topscores, player, score):
     topscores = sorted(topscores, key=itemgetter(1), reverse=True)[:10]
 
     try:
-        with open('highscores.txt', 'w') as file:
+        with open('highscores.txt', 'wb') as file:
             pickle.dump(topscores, file)
     except IOError as e:
         # doesn't exist

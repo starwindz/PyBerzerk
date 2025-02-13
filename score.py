@@ -61,11 +61,11 @@ class gameFPS(pygame.sprite.Sprite):
     clock = 0
     color = BLACK
     displayIterator = cycle(range(2))
-    display = displayIterator.next()
+    display = next(displayIterator)
 
     @staticmethod
     def toggleDisplay():
-        gameFPS.display = gameFPS.displayIterator.next()
+        gameFPS.display = next(gameFPS.displayIterator)
 
     def __init__(self,color=BLACK):
         super(gameFPS,self).__init__()

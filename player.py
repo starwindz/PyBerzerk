@@ -111,7 +111,7 @@ class Player(AnimateObj):
         self.setpattern("electrocuting")
 
     def mov(self, direction):
-        # if self.patternkey <> "electrocuting":
+        # if self.patternkey != "electrocuting":
         x, y, pattern = MOV_DICT[direction]
         self.rect.x += x*2
         self.rect.y += y*2

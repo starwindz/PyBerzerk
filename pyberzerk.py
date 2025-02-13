@@ -142,6 +142,7 @@ class Game:
         self.lives = MAX_LIVES
         self.bonuspts = None
         self.keys = pygame.key.get_pressed()
+        self.sprites = pygame.sprite.Group()
 
     def process_events(self):
         for e in pygame.event.get():
@@ -203,7 +204,7 @@ class Game:
         self.spriteCleanUp()
 
     def electrocute(self):
-        if self.player.patternkey <> "electrocuting":
+        if self.player.patternkey != "electrocuting":
             # disable any active timer(s)
             pygame.time.set_timer(SPAWN_OTTO,0)
             pygame.time.set_timer(ROBOT_ACTIVE,0)
@@ -442,14 +443,14 @@ class Game:
 
             gameFPS.clock = clock.get_fps()
 
-            if self.player.patternkey <> "electrocuting":
+            if self.player.patternkey != "electrocuting":
                 self.player.mov(self.movdir)
 
                 if self.movdir & 0x10:
                     # fire laser only if cooldown has been 0.6 secs
                     if now - self.timer > self.cooldown:
                         bullet = self.player.fire(levelcolor, imagefiles['bullets'])
-                        if bullet <> None:
+                        if bullet != None:
                             self.sprites.add(bullet)
                             self.bullets.add(bullet)
                             self.timer = now
@@ -542,7 +543,7 @@ class Game:
                     pass
             i += 1
 
-            if p <> "O":
+            if p != "O":
                 rect = pygame.Rect(x+x_offset, y+y_offset, w, h)
                 mazewall = WallObject(screen, WALL_COLOR, rect)
                 self.sprites.add(mazewall)

@@ -23,7 +23,7 @@ SCREEN_RECT = Rect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)   # screen dimensions
 # image cache
 IMAGEKEYS = ['player', 'robot', 'otto', 'robotexplode', 'lives', 'bullets', 'icon']         #image keys
 
-DIRECT_DICT = {K_LEFT : 0x01, K_RIGHT : 0x02, K_UP : 0x04, K_DOWN : 0x08, K_SPACE : 0x10}   # keyboard keys
+DIRECT_DICT = {K_LEFT : 0x01, K_RIGHT : 0x02, K_UP : 0x04, K_DOWN : 0x08, K_LCTRL : 0x10}   # keyboard keys
 
 GAME_STATES = ["HighScores", "Cntrls", "Play"]  # game states
 

@@ -25,7 +25,7 @@ def gameOver(screen, score):
     return bRet
 
 def _gameOver(screen):
-    _gameWait(screen, "GAME OVER", "Press SPACEBAR to Start", K_SPACE)
+    _gameWait(screen, "GAME OVER", "Press Left Control to Start", K_SPACE)
 
 def gamePause(screen):
     _gameWait(screen, "GAME PAUSE", "Press F1 To Continue", K_F1)
@@ -114,7 +114,7 @@ def blinkCntrls(screen, msg, display=True):
               "[ RIGHT ARROW KEY ] - Move the player right",
               "[ UP ARROW KEY ] -  Move the player up",
               "[ DOWN ARROW KEY ] - Move the player down",
-              "[ SPACEBAR KEY ] - Fire laser",
+              "[ LEFT CONTROL KEY ] - Fire laser",
               "[ F1 KEY ] - Pause game",
               "[ F2 KEY ] - Toggle frames-per-second display",
               "[ ESC KEY ] - Quit game"
@@ -170,7 +170,7 @@ def highScoresScreen(screen):
 
 HIGH_SCORE = "High  Scores"
 COPYRIGHT = u"\u00A9" + " 1980  STERN  Electronics,  Inc."
-MSG1 = "How To Play: F1    Start Game: SPACEBAR"
+MSG1 = "How To Play: F1    Start Game: Left Control"
 
 def blinkHighScores(screen, msg, display):
     font_size = 24

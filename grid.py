@@ -166,9 +166,21 @@ class AStar(object):
                     reachable = False
                 else:
                     reachable = True
-                self.cells.append(Cell(x, y, reachable))
-        self.start = self.get_cell(*start)
-        self.end = self.get_cell(*end)
+                self.cells.append(Cell(x, y, reachable))                
+        
+        #print('init_grid... start = ', start)
+        if start[0] >= 40:
+            print('reset start.x to 0')
+            self.start = self.get_cell(0, start[1])
+        else:
+            self.start = self.get_cell(*start)
+           
+        #print('init_grid... end = ', end)
+        if end[0] >= 40:
+            print('reset end.x to 0')
+            self.end = self.get_cell(0, end[1])
+        else:
+            self.end = self.get_cell(*end)
 
     def get_heuristic(self, cell):
         """Compute the heuristic value H for a cell.

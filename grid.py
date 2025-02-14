@@ -225,8 +225,8 @@ class AStar(object):
         while cell.parent is not self.start:
             cell = cell.parent
             if cell is None:
-                #pass
-                continue
+                pass
+                #continue
             path.append((cell.x, cell.y))
 
         path.append((self.start.x, self.start.y))

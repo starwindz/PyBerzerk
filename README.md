@@ -1,6 +1,6 @@
 **PyBerzerk**
 ===================
-Clone of the 1980s **Berzerk** arcade game. Written by TerryO as a  **Python** development exercise using **Pygame**. To date, tested on Windows and Ubuntu platforms.
+Clone of the 1980s **Berzerk** arcade game. Forked from [flyingthing/PyBerzerk](https://github.com/flyingthing/PyBerzerk) written by TerryO.
 
 **SCREENSHOTS:**
 <table>
@@ -17,15 +17,10 @@ Clone of the 1980s **Berzerk** arcade game. Written by TerryO as a  **Python** d
 ----------
 
 **REQUIREMENTS:**
-Before running the game, make sure you have [Python v2.7](http://www.python.org/download/) installed. You will also need to install [Pygame v1.9.1](http://www.pygame.org/download.shtml), as the game will not run without it.
-
-From the command line: python pyberzerk.py
-
-> **NOTE:** This game has not been tested on Python 3.x
-
+Before running the game, please make sure you have [Python v3.x](http://www.python.org/download/) installed. You will also need to install the latest version of [PyGame](http://www.pygame.org/download.shtml). You can install PyGame too by entering `pip install pygame` on console window.
 
 **GAME PLAY:**
-Use the **ARROW** key(s) to navigate the player through a maze filled with robots who have an extreme dislike for humanoids.  Hold the **SPACEBAR** and press **ARROW** key(s) to fire player's laser weapon. The player can be killed by being blasted by a robot, running into a robot, exploding robot shrapnel, coming into contact with the electrified maze walls or being touched by Evil Otto(bouncing smiley face).
+Use the **ARROW** key(s) to navigate the player through a maze filled with robots who have an extreme dislike for humanoids.  Hold the **LEFT CONTROL** and press **ARROW** key(s) to fire player's laser weapon. The player can be killed by being blasted by a robot, running into a robot, exploding robot shrapnel, coming into contact with the electrified maze walls or being touched by Evil Otto(bouncing smiley face).
 
 <table>
  <tr>
@@ -49,7 +44,7 @@ Use the **ARROW** key(s) to navigate the player through a maze filled with robot
   <td>Move the player down</td>
  </tr>
   <tr>
-  <td><kbd>SPACEBAR</kbd></td>
+  <td><kbd>LEFT CONTROL</kbd></td>
   <td>Fire laser in direction of ARROW key(s)</td>
  </tr>
 </table>
@@ -66,13 +61,7 @@ Use the **ARROW** key(s) to navigate the player through a maze filled with robot
 Critiques regarding game play, bugs, glitches are most welcome.
 
 -----------------------------------------------------------------------------
-**TODO:**
- 
-1. Make standalone executable.
-1. Add joystick control.
-1. Add sound/voice.
-1. Necktie(bullet goes thru player body and head)
-1. Custom font(ttf)
+Please see [the issue list](https://github.com/starwindz/PyBerzerk/issues) for issues and features to be developed.
 
 #### References
 1. https://en.wikipedia.org/wiki/Berzerk_(video_game)

@@ -351,7 +351,8 @@ class RobotExplode(AnimateObj):
         self.rect.y = robot.rect.y - 4
         self.setcolor(robot.color)
 
-        self.addpattern("explode", [0,1,2])
+        #self.addpattern("explode", [0,1,2])
+        self.addpattern("explode", [0,1])
         self.setpattern("explode")
         Robot.grp.add(self)
 

@@ -347,8 +347,8 @@ class RobotExplode(AnimateObj):
             self.images[i] = scale_image
 
         self.rect = self.images[0].get_rect()
-        self.rect.x = robot.rect.x
-        self.rect.y = robot.rect.y
+        self.rect.x = robot.rect.x - 8
+        self.rect.y = robot.rect.y - 4
         self.setcolor(robot.color)
 
         self.addpattern("explode", [0,1,2])

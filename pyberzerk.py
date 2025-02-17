@@ -14,6 +14,8 @@ from lives import *
 from score import *
 from utils import *
 from grid import *
+from sound import *
+from debug import *
 import itertools
 
 
@@ -154,8 +156,10 @@ class Game:
             elif e.type == SPAWN_OTTO:
                 self.spawnOtto()
             elif e.type == ROBOT_ACTIVE:
+                Debug.printf('# robots are activated')
                 self.robotActive()
             elif e.type == PLAYER_EXIT:
+                Debug.printf('# player is exiting room')
                 self.playerExit(e.mazeexit)
             elif e.type == BONUS_POINTS:
                 self.bonusPoints(e.bonuspoints)
@@ -402,6 +406,7 @@ class Game:
 
         self.Arena(screen,self.maze,levelcolor)
         grid = Grid(40, 22, self.maze.pillars)
+        Debug.printf('# player entered room');
 
         def robotCallBack(cmd, *argv):
             if cmd == "FIRE":
@@ -434,6 +439,7 @@ class Game:
 
         # maze loop
         self.done = False
+        electrocuted = False;
         while not self.done:
             now = pygame.time.get_ticks()
             self.process_events()
@@ -454,6 +460,11 @@ class Game:
                             self.sprites.add(bullet)
                             self.bullets.add(bullet)
                             self.timer = now
+                            Debug.printf('# player fired laser')
+            else:
+                if electrocuted == False:
+                    Debug.printf('# player is destroyed')
+                    electrocuted = True
 
             self.check_collisions()
             self.refreshSprites()

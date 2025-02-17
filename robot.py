@@ -5,6 +5,7 @@ from animateobj import *
 import player
 from bullet import *
 from grid import *
+from debug import *
 import math
 import cmath    # complex numbers
 import itertools
@@ -155,6 +156,7 @@ class Robot(AnimateObj):
 
 
     def kill(self):
+        Debug.printf('# robot is destroyed')
         super(Robot,self).kill()
         if type(self) == Robot:
             Robot.killcnt += 1
@@ -320,6 +322,7 @@ class Robot(AnimateObj):
             if bullet != None:
                 if self.cbRobot != None:
                     self.cbRobot("FIRE", bullet)
+                    Debug.printf('# robot fired laser')
 
     def draw(self):
         pass

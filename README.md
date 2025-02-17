@@ -1,6 +1,8 @@
 **PyBerzerk**
 ===================
-Clone of the 1980s **Berzerk** arcade game. Forked from [flyingthing/PyBerzerk](https://github.com/flyingthing/PyBerzerk) written by TerryO.
+Clone of the 1980s **Berzerk** arcade game. 
+Forked from [flyingthing/PyBerzerk](https://github.com/flyingthing/PyBerzerk) written by TerryO.
+Bugs fix and features improvement by starwindz
 
 **SCREENSHOTS:**
 <table>

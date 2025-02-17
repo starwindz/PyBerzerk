@@ -192,16 +192,19 @@ class Game:
         self.maze.exit()
         self.mazeexit = None
         self.done = True
-        for obj in self.sprites:
-            if type(obj) is Lives:
-                if obj.life == self.lives:
-                    obj.kill()
-                    break
+        if hasattr(self, 'sprites'):
+            for obj in self.sprites:
+                if type(obj) is Lives:
+                    if obj.life == self.lives:
+                        obj.kill()
+                        break
         self.lives -= 1
         if self.lives <= 0:
-            for obj in self.wall2grp:
-                obj.kill()
-            self.player.kill()
+            if hasattr(self, 'wall2grp'):
+                for obj in self.wall2grp:
+                    obj.kill()
+            if hasattr(self, 'player'):
+                self.player.kill()
             self.refreshSprites()
         else:
             screenMazeClear(screen)

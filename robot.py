@@ -5,6 +5,7 @@ from animateobj import *
 import player
 from bullet import *
 from grid import *
+from sound import *
 from debug import *
 import math
 import cmath    # complex numbers
@@ -156,7 +157,9 @@ class Robot(AnimateObj):
 
 
     def kill(self):
+        sound.playRobotIsDestroyed()
         Debug.printf('# robot is destroyed')
+        
         super(Robot,self).kill()
         if type(self) == Robot:
             Robot.killcnt += 1
@@ -232,6 +235,10 @@ class Robot(AnimateObj):
                 if Robot.laserEnable:
                     self.shoot()
                 self.timer = now
+                
+            if random.randrange(0, 10000) < 100:
+                Debug.printf('# random robot voice')
+                sound.playRobotVoice(random.randrange(0, 14))    
 
 
     def sameCell(self):
@@ -321,7 +328,8 @@ class Robot(AnimateObj):
             bullet = RobotBullet(self.color, direction, self.rect.centerx + x, self.rect.centery + y, self.imagefiles['bullets'] )
             if bullet != None:
                 if self.cbRobot != None:
-                    self.cbRobot("FIRE", bullet)
+                    self.cbRobot("FIRE", bullet)                    
+                    sound.playRobotFiredLaser()
                     Debug.printf('# robot fired laser')
 
     def draw(self):

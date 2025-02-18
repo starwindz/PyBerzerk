@@ -19,7 +19,16 @@ Bugs fix and features improvement by starwindz
 ----------
 
 **REQUIREMENTS:**
-Before running the game, please make sure you have [Python v3.x](http://www.python.org/download/) installed. You will also need to install the latest version of [PyGame](http://www.pygame.org/download.shtml). You can install PyGame too by entering `pip install pygame` on console window.
+Before running the game, please make sure you have [Python v3.x](http://www.python.org/download/) installed. 
+And following modules need to be installed.
+- PyGame: `pip install pygame`
+- PyAudio: `pip install pyaudio`
+- Wave: `pip install wave`
+- NumPy: `pip install numpy`
+- Keyboard: `pip install keyboard`
+
+**HOW TO RUN:**
+- `python pyberzerk.py`
 
 **GAME PLAY:**
 Use the **ARROW** key(s) to navigate the player through a maze filled with robots who have an extreme dislike for humanoids.  Hold the **LEFT CONTROL** and press **ARROW** key(s) to fire player's laser weapon. The player can be killed by being blasted by a robot, running into a robot, exploding robot shrapnel, coming into contact with the electrified maze walls or being touched by Evil Otto(bouncing smiley face).
@@ -67,4 +76,3 @@ Please see [the issue list](https://github.com/starwindz/PyBerzerk/issues) for i
 
 #### References
 1. https://en.wikipedia.org/wiki/Berzerk_(video_game)
-1. http://www.robotron2084guidebook.com/home/games/berzerk/

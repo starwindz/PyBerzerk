@@ -3,6 +3,8 @@ from pygame.locals import *
 from config import *
 from animateobj import *
 from bullet import *
+from sound import *
+from debug import *
 
 """
 K_LEFT : 0x01, K_RIGHT : 0x02, K_UP : 0x04, K_DOWN : 0x08, K_LSHIFT: 0x10
@@ -158,6 +160,8 @@ class Player(AnimateObj):
             if self.patternkey in FIRE_DICT:
                 x, y, idx = FIRE_DICT[self.patternkey]
                 bullet = PlayerBullet(color, self.patternkey[idx:], self.rect.x + x, self.rect.y + y, filename)
+                sound.playPlayerFiredLaser()
+                Debug.printf('# player fired laser')
         return bullet
 
 class PlayerBullet(Bullet):

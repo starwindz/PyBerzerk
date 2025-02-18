@@ -156,9 +156,11 @@ class Game:
             elif e.type == SPAWN_OTTO:
                 self.spawnOtto()
             elif e.type == ROBOT_ACTIVE:
-                Debug.printf('# robots are activated')
                 self.robotActive()
+                sound.playRobotVoice(random.randrange(0, 14))
+                Debug.printf('# robots are activated')
             elif e.type == PLAYER_EXIT:
+                sound.playRobotVoice(random.randrange(0, 14))
                 Debug.printf('# player is exiting room')
                 self.playerExit(e.mazeexit)
             elif e.type == BONUS_POINTS:
@@ -409,6 +411,7 @@ class Game:
 
         self.Arena(screen,self.maze,levelcolor)
         grid = Grid(40, 22, self.maze.pillars)
+        # sound.playRobotVoice(random.randrange(0, 14))
         Debug.printf('# player entered room');
 
         def robotCallBack(cmd, *argv):
@@ -463,11 +466,11 @@ class Game:
                             self.sprites.add(bullet)
                             self.bullets.add(bullet)
                             self.timer = now
-                            Debug.printf('# player fired laser')
             else:
                 if electrocuted == False:
-                    Debug.printf('# player is destroyed')
                     electrocuted = True
+                    sound.playPlayerIsDestroyed()
+                    Debug.printf('# player is destroyed')
 
             self.check_collisions()
             self.refreshSprites()

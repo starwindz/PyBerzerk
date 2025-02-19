@@ -3,7 +3,11 @@ import wave
 import threading
 import io
 import numpy as np
-import keyboard  # ✅ Fix: Real-time key detection using keyboard.add_hotkey()
+import keyboard
+import time
+import random
+from utils import *
+from debug import *
 
 class WavePlay:
     """Class for preloading and playing a WAV file from memory using PyAudio, with pitch and sampling rate adjustments."""
@@ -49,9 +53,16 @@ class WavePlay:
         new_indices = np.linspace(0, len(self.original_audio_data) - 1, num_samples).astype(int)
         self.audio_data = self.original_audio_data[new_indices]  # Always start from the original data
 
-    def play(self):
+    def play(self, randomPlay):
         """Play the WAV file from memory with adjusted sampling rate and pitch."""
         def stream_audio():
+            if randomPlay:
+                _pitch = generate_random_number(1.00, 1.20, 0.01)
+                _sample_rate = generate_random_number(1.00, 1.20, 0.01)
+                self.set_audio_params(_pitch, _sample_rate)
+                _msg = '# pitch = ' + str(round(_pitch, 2)) + ', ' + 'sample_rate = ' + str(round(_sample_rate, 2))
+                Debug.printf(_msg)
+            
             self.wav_memory.seek(0)
             wf = wave.open(self.wav_memory, 'rb')
 
@@ -103,7 +114,7 @@ if __name__ == "__main__":
     print("[Space] Play sound")
     print("[Q] Quit")
 
-    # ✅ Fix: Use keyboard hotkeys for real-time control
+    # Use keyboard hotkeys for real-time control
     def increase_pitch():
         global pitch_factor
         pitch_factor = min(2.0, pitch_factor + 0.1)
@@ -143,7 +154,7 @@ if __name__ == "__main__":
     keyboard.add_hotkey("space", play_sound)
     keyboard.add_hotkey("q", quit_program)
 
-    # ✅ Fix: Use keyboard.wait() instead of a busy loop
+    # Use keyboard.wait() instead of a busy loop
     keyboard.wait("q")  # Wait for "Q" to exit
 
     player.close()
@@ -188,45 +199,37 @@ class Sound:
         ]
         
         self.playerFiredLaser = WavePlay(self.soundFolder + '_player fired laser_.wav')
-        self.robotFiredLaser = WavePlay(self.soundFolder + '_robot fired laser_.wav')
-       
+        self.robotFiredLaser = WavePlay(self.soundFolder + '_robot fired laser_.wav')       
         self.playerIsDestroyed = WavePlay(self.soundFolder + '_player is destroyed_.wav')
         self.robotIsDestroyed = WavePlay(self.soundFolder + '_robot is destroyed_.wav')
-
-        self.voices = [
-            WavePlay(self.soundFolder + self.voiceFiles[0]),
-            WavePlay(self.soundFolder + self.voiceFiles[1]),            
-            WavePlay(self.soundFolder + self.voiceFiles[2]),            
-            WavePlay(self.soundFolder + self.voiceFiles[3]),            
-            WavePlay(self.soundFolder + self.voiceFiles[4]),            
-            WavePlay(self.soundFolder + self.voiceFiles[5]),            
-            WavePlay(self.soundFolder + self.voiceFiles[6]),            
-            WavePlay(self.soundFolder + self.voiceFiles[7]),            
-            WavePlay(self.soundFolder + self.voiceFiles[8]),            
-            WavePlay(self.soundFolder + self.voiceFiles[9]),            
-            WavePlay(self.soundFolder + self.voiceFiles[10]),            
-            WavePlay(self.soundFolder + self.voiceFiles[11]),            
-            WavePlay(self.soundFolder + self.voiceFiles[12]),            
-            WavePlay(self.soundFolder + self.voiceFiles[13])
-        ]
+        self.voices = [WavePlay(self.soundFolder + file) for file in self.voiceFiles[:14]]
+       
+        self.prevTime = time.time()
 
     def playPlayerFiredLaser(self):
-        self.playerFiredLaser.play()
+        self.playerFiredLaser.play(False)
 
 
     def playRobotFiredLaser(self):
-        self.robotFiredLaser.play()
+        self.robotFiredLaser.play(False)
 
         
     def playPlayerIsDestroyed(self):
-        self.playerIsDestroyed.play()
+        self.playerIsDestroyed.play(False)
 
 
     def playRobotIsDestroyed(self):
-        self.robotIsDestroyed.play()
+        self.robotIsDestroyed.play(False)
         
     def playRobotVoice(self, index):
-        self.voices[index].play()
-
+        curTime = time.time()
+        gapTime = curTime - self.prevTime
+        if gapTime > random.randrange(3, 7):  # 3 to 6
+            self.prevTime = curTime
+            self.voices[index].play(True)
+            Debug.printf('# random robot voice played: %f', round(gapTime, 1))
+        else:
+            pass
+            # Debug.printf('# random robot voice skipped: %f', round(gapTime, 1))
 
 sound = Sound()

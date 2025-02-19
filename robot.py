@@ -237,7 +237,6 @@ class Robot(AnimateObj):
                 self.timer = now
                 
             if random.randrange(0, 10000) < 100:
-                Debug.printf('# random robot voice')
                 sound.playRobotVoice(random.randrange(0, 14))    
 
 

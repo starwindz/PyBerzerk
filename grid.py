@@ -170,14 +170,14 @@ class AStar(object):
         
         #print('init_grid: start = ', start)
         if start[0] >= 40:
-            print('reset start.x to 0')
+            # print('reset start.x to 0')
             self.start = self.get_cell(0, start[1])
         else:
             self.start = self.get_cell(*start)
            
         #print('init_grid: end = ', end)
         if end[0] >= 40:
-            print('reset end.x to 0')
+            # print('reset end.x to 0')
             self.end = self.get_cell(0, end[1])
         else:
             self.end = self.get_cell(*end)
@@ -198,7 +198,7 @@ class AStar(object):
         try:
             cell = self.cells[int(x) * self.grid_height + int(y)]
         except IndexError as message:
-            print('in get_cell: ', 'x = ', int(x), ' y = ', int(y), 'self.grid_height = ', self.grid_height)
+            print('# in get_cell: ', 'x = ', int(x), ' y = ', int(y), 'self.grid_height = ', self.grid_height)
             raise SystemExit(message)
         return cell
 

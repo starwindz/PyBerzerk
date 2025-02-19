@@ -1,9 +1,10 @@
 import sys
 import pygame
+import pickle
+import random
 from pygame.locals import *
 from config import *
 from operator import itemgetter
-import pickle
 
 def gameOver(screen, score):
     bRet = False
@@ -390,3 +391,12 @@ def topScores(topscores, player, score):
     except IOError as e:
         # doesn't exist
         pass
+        
+def generate_random_number(start: float, end: float, step: float) -> float:
+    num_steps = int((end - start) / step) + 1
+    random_index = random.randint(0, num_steps - 1)
+    return round(start + random_index * step, 10)
+    '''
+    random_number = generate_random_number(1.00, 1.30, 0.01)
+    print(random_number)
+    '''

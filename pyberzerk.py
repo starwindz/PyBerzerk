@@ -157,12 +157,16 @@ class Game:
                 self.spawnOtto()
             elif e.type == ROBOT_ACTIVE:
                 self.robotActive()
-                sound.playRobotVoice(random.randrange(0, 14))
                 Debug.printf('# robots are activated')
-            elif e.type == PLAYER_EXIT:
+                Debug.printf('# random robot voice played when robots are activated')
                 sound.playRobotVoice(random.randrange(0, 14))
+                
+            elif e.type == PLAYER_EXIT:
                 Debug.printf('# player is exiting room')
+                Debug.printf('# random robot voice played when player is exiting room')                
+                sound.playRobotVoice(random.randrange(0, 14))
                 self.playerExit(e.mazeexit)
+                
             elif e.type == BONUS_POINTS:
                 self.bonusPoints(e.bonuspoints)
             elif e.type == BONUS_LIFE:

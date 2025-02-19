@@ -1,6 +1,8 @@
 import pygame, spritesheet
 from itertools import cycle
 from config import *
+from robot import *
+import config
 
 class Text(object):
     def __init__(self, textFont, size, message, color, xpos, ypos):
@@ -40,6 +42,34 @@ class Score(pygame.sprite.Sprite):
 
     def draw(self):
         pass
+        
+class Level(pygame.sprite.Sprite):
+    def __init__(self,color):
+        super(Level, self).__init__()
+        self.color = color
+
+    def update(self):
+        tmp = '{:>7}'.format(config.arenaCnt)
+        text = Text(FONT, 20, tmp, self.color, 450, SCREEN_HEIGHT - BORDERTHICKNESS - WALLTHICKNESS )
+        self.image = text.surface
+        self.rect = text.rect
+
+    def draw(self):
+        pass 
+        
+class KillCount(pygame.sprite.Sprite):
+    def __init__(self,color):
+        super(KillCount, self).__init__()
+        self.color = color
+
+    def update(self):
+        tmp = '{:>7}'.format(Robot.totalKillcnt)
+        text = Text(FONT, 20, tmp, self.color, 550, SCREEN_HEIGHT - BORDERTHICKNESS - WALLTHICKNESS )
+        self.image = text.surface
+        self.rect = text.rect
+
+    def draw(self):
+        pass        
 
 class Bonus(pygame.sprite.Sprite):
     def __init__(self, color, bonus):

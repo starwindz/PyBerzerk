@@ -18,6 +18,8 @@ class Robot(AnimateObj):
     robotcnt = 0
     laserEnable = False
 
+    totalKillcnt = 0
+
     @staticmethod
     def getGroup():
         return Robot.grp
@@ -163,6 +165,7 @@ class Robot(AnimateObj):
         super(Robot,self).kill()
         if type(self) == Robot:
             Robot.killcnt += 1
+            Robot.totalKillcnt += 1
 
             # check for bonus points
             if Robot.killcnt == Robot.robotcnt:

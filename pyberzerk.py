@@ -17,6 +17,7 @@ from grid import *
 from sound import *
 from debug import *
 import itertools
+import config
 
 
 #--- Global constants ---
@@ -145,6 +146,9 @@ class Game:
         self.bonuspts = None
         self.keys = pygame.key.get_pressed()
         self.sprites = pygame.sprite.Group()
+        
+        Robot.totalKillcnt = 0
+        config.arenaCnt = 0
 
     def process_events(self):
         for e in pygame.event.get():
@@ -409,10 +413,17 @@ class Game:
 
         self.score = Score(GREEN)
         self.sprites.add(self.score)
+        
+        self.Level = Level(GREEN)
+        self.sprites.add(self.Level)        
+
+        self.killCount = KillCount(GREEN)
+        self.sprites.add(self.killCount)        
 
         self.gamefps = gameFPS(GREEN)
         self.sprites.add(self.gamefps)
 
+        config.arenaCnt += 1
         self.Arena(screen,self.maze,levelcolor)
         grid = Grid(40, 22, self.maze.pillars)
         # sound.playRobotVoice(random.randrange(0, 14))

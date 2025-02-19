@@ -77,3 +77,6 @@ ROBOTEXPLODE_SPRITES = 2
 
 # debug mode
 DEBUG_MODE = True
+
+# global variables
+arenaCnt = 0

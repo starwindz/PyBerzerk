@@ -26,7 +26,7 @@ def gameOver(screen, score):
     return bRet
 
 def _gameOver(screen):
-    _gameWait(screen, "GAME OVER", "Press Left Control to Start", K_SPACE)
+    _gameWait(screen, "GAME OVER", "Press Left Control to Start", K_LCTRL)
 
 def gamePause(screen):
     _gameWait(screen, "GAME PAUSE", "Press F1 To Continue", K_F1)

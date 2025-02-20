@@ -2,7 +2,7 @@ import pygame, spritesheet
 from itertools import cycle
 from config import *
 from robot import *
-import config
+import globals
 
 class Text(object):
     def __init__(self, textFont, size, message, color, xpos, ypos):
@@ -49,7 +49,7 @@ class Level(pygame.sprite.Sprite):
         self.color = color
 
     def update(self):
-        tmp = '{:>7}'.format(config.arenaCnt)
+        tmp = '{:>7}'.format(globals.arenaCnt)
         text = Text(FONT, 20, tmp, self.color, 450, SCREEN_HEIGHT - BORDERTHICKNESS - WALLTHICKNESS )
         self.image = text.surface
         self.rect = text.rect

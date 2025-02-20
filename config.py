@@ -75,8 +75,4 @@ ROBOTEXPLODE_SPRITES = 2
 # movement/shoot directions
 (N, NE, E, SE, S, SW, W, NW) = range(8)
 
-# debug mode
-DEBUG_MODE = True
 
-# global variables
-arenaCnt = 0

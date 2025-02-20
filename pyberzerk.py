@@ -17,7 +17,7 @@ from grid import *
 from sound import *
 from debug import *
 import itertools
-import config
+import globals
 
 
 #--- Global constants ---
@@ -148,7 +148,7 @@ class Game:
         self.sprites = pygame.sprite.Group()
         
         Robot.totalKillcnt = 0
-        config.arenaCnt = 0
+        globals.arenaCnt = 0
 
     def process_events(self):
         for e in pygame.event.get():
@@ -423,7 +423,7 @@ class Game:
         self.gamefps = gameFPS(GREEN)
         self.sprites.add(self.gamefps)
 
-        config.arenaCnt += 1
+        globals.arenaCnt += 1
         self.Arena(screen,self.maze,levelcolor)
         grid = Grid(40, 22, self.maze.pillars)
         # sound.playRobotVoice(random.randrange(0, 14))

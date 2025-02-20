@@ -161,7 +161,7 @@ class Player(AnimateObj):
                 x, y, idx = FIRE_DICT[self.patternkey]
                 bullet = PlayerBullet(color, self.patternkey[idx:], self.rect.x + x, self.rect.y + y, filename)
                 sound.playPlayerFiredLaser()
-                Debug.printf('# player fired laser')
+                Debug.print('# player fired laser')
         return bullet
 
 class PlayerBullet(Bullet):

@@ -33,7 +33,7 @@ class Otto(AnimateObj):
 
 
         self.addpattern("spawn",[0,1,3,4])
-        self.addpattern("otto", [4])
+        self.addpattern("otto", [4,2])
         self.setpattern("spawn")
 
         self.player = player
@@ -79,6 +79,7 @@ class Otto(AnimateObj):
 
     #
     def bounce(self):
+        '''
         AMPLITUDE = 50
         self.step += self.dir
         if self.step >= AMPLITUDE:
@@ -87,3 +88,15 @@ class Otto(AnimateObj):
         if self.step <= 0:
             self.dir *= -1
             self.step += self.dir
+        '''
+        AMPLITUDE = 60 / 2
+        PERIOD = 2 * math.pi
+        FREQUENCY = 2.0 # 2.0 => bouncing speed (according to level?)
+
+        self.step = AMPLITUDE * math.sin(FREQUENCY * self.timer)
+        self.timer += 0.1
+
+        if self.step >= 50 / 2 and self.step <= 60 / 2:
+            self.addpattern("otto", [2])
+        else:
+            self.addpattern("otto", [4])

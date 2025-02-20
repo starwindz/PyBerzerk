@@ -160,7 +160,7 @@ class Robot(AnimateObj):
 
     def kill(self):
         sound.playRobotIsDestroyed()
-        Debug.printf('# robot is destroyed')
+        Debug.print('# robot is destroyed')
         
         super(Robot,self).kill()
         if type(self) == Robot:
@@ -332,7 +332,7 @@ class Robot(AnimateObj):
                 if self.cbRobot != None:
                     self.cbRobot("FIRE", bullet)                    
                     sound.playRobotFiredLaser()
-                    Debug.printf('# robot fired laser')
+                    Debug.print('# robot fired laser')
 
     def draw(self):
         pass

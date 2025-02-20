@@ -61,7 +61,7 @@ class WavePlay:
                 _sample_rate = generate_random_number(1.00, 1.20, 0.01)
                 self.set_audio_params(_pitch, _sample_rate)
                 _msg = '# pitch = ' + str(round(_pitch, 2)) + ', ' + 'sample_rate = ' + str(round(_sample_rate, 2))
-                Debug.printf(_msg)
+                Debug.print(_msg)
             
             self.wav_memory.seek(0)
             wf = wave.open(self.wav_memory, 'rb')
@@ -89,8 +89,8 @@ class WavePlay:
             stream.close()
             wf.close()
 
-        threading.Thread(target=stream_audio, daemon=True).start()
-
+        threading.Thread(target=stream_audio, daemon=True).start()        
+ 
     def close(self):
         """Terminate the PyAudio instance."""
         self.p.terminate()
@@ -227,9 +227,9 @@ class Sound:
         if gapTime > random.randrange(3, 7):  # 3 to 6
             self.prevTime = curTime
             self.voices[index].play(True)
-            Debug.printf('# random robot voice played: %f', round(gapTime, 1))
+            Debug.print('# random robot voice played: ', round(gapTime, 1))
         else:
             pass
-            # Debug.printf('# random robot voice skipped: %f', round(gapTime, 1))
+            # Debug.print('# random robot voice skipped: %f', round(gapTime, 1))
 
 sound = Sound()

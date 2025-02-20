@@ -161,13 +161,13 @@ class Game:
                 self.spawnOtto()
             elif e.type == ROBOT_ACTIVE:
                 self.robotActive()
-                Debug.printf('# robots are activated')
-                Debug.printf('# random robot voice played when robots are activated')
+                Debug.print('# robots are activated')
+                Debug.print('# random robot voice played when robots are activated')
                 sound.playRobotVoice(random.randrange(0, 14))
                 
             elif e.type == PLAYER_EXIT:
-                Debug.printf('# player is exiting room')
-                Debug.printf('# random robot voice played when player is exiting room')                
+                Debug.print('# player is exiting room')
+                Debug.print('# random robot voice played when player is exiting room')                
                 sound.playRobotVoice(random.randrange(0, 14))
                 self.playerExit(e.mazeexit)
                 
@@ -427,7 +427,7 @@ class Game:
         self.Arena(screen,self.maze,levelcolor)
         grid = Grid(40, 22, self.maze.pillars)
         # sound.playRobotVoice(random.randrange(0, 14))
-        Debug.printf('# player entered room');
+        Debug.print('# player entered room');
 
         def robotCallBack(cmd, *argv):
             if cmd == "FIRE":
@@ -453,7 +453,8 @@ class Game:
         self.cooldown = 600
 
         # set timer event for Otto
-        pygame.time.set_timer(SPAWN_OTTO,1500*Robot.robotcnt) # 1.5sec/robot
+        # pygame.time.set_timer(SPAWN_OTTO,1500*Robot.robotcnt) # 1.5sec/robot
+        pygame.time.set_timer(SPAWN_OTTO,2000*Robot.robotcnt) # 2.0sec/robot
 
         # set timer event for robot movement
         pygame.time.set_timer(ROBOT_ACTIVE,3000) # 3sec
@@ -485,7 +486,7 @@ class Game:
                 if electrocuted == False:
                     electrocuted = True
                     sound.playPlayerIsDestroyed()
-                    Debug.printf('# player is destroyed')
+                    Debug.print('# player is destroyed')
 
             self.check_collisions()
             self.refreshSprites()

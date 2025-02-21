@@ -13,6 +13,8 @@ class WavePlay:
     """Class for preloading and playing a WAV file from memory using PyAudio, with pitch and sampling rate adjustments."""
 
     def __init__(self, filename):
+        filename = get_full_path(filename)
+        
         """Load the entire WAV file into memory and store original parameters."""
         self.p = pyaudio.PyAudio()
         self.wav_memory = self._load_sound(filename)

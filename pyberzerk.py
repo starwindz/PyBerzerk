@@ -454,7 +454,7 @@ class Game:
 
         # set timer event for Otto
         # pygame.time.set_timer(SPAWN_OTTO,1500*Robot.robotcnt) # 1.5sec/robot
-        pygame.time.set_timer(SPAWN_OTTO,2000*Robot.robotcnt) # 2.0sec/robot
+        pygame.time.set_timer(SPAWN_OTTO,1750*Robot.robotcnt) # 1.75sec/robot
 
         # set timer event for robot movement
         pygame.time.set_timer(ROBOT_ACTIVE,3000) # 3sec

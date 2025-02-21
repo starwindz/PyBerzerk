@@ -2,6 +2,7 @@ import sys
 import pygame
 import pickle
 import random
+import os
 from pygame.locals import *
 from config import *
 from operator import itemgetter
@@ -400,3 +401,9 @@ def generate_random_number(start: float, end: float, step: float) -> float:
     random_number = generate_random_number(1.00, 1.30, 0.01)
     print(random_number)
     '''
+def get_full_path(filename):
+    if getattr(sys, 'frozen', False):
+        base_path = sys._MEIPASS
+    else:
+        base_path = os.path.dirname(os.path.abspath(__file__))
+    return os.path.join(base_path, filename)

@@ -54,7 +54,7 @@ MOV_DICT = {0x00: (0,  0, "still"),
 
 
 class Player(AnimateObj):
-    def __init__(self, door, color, filename, rect, count, colorkey=BLACK, scale=2):
+    def __init__(self, door, color, filename, rect, count, colorkey=BLACK, scale=SPRITE_SCALE):
         super(Player, self).__init__()
         ss = spritesheet.spritesheet(filename)
         self.images = ss.load_strip(rect, count, colorkey)
@@ -165,5 +165,5 @@ class Player(AnimateObj):
         return bullet
 
 class PlayerBullet(Bullet):
-    def __init__(self, color, direction, x, y, filename, speed=8, count=1, colorkey=None, scale=2):
-        super(PlayerBullet, self).__init__(color, direction, x, y, filename, speed=12, count=1, colorkey=BLACK, scale=2)
+    def __init__(self, color, direction, x, y, filename, speed=8, count=1, colorkey=None, scale=SPRITE_SCALE):
+        super(PlayerBullet, self).__init__(color, direction, x, y, filename, speed=12, count=1, colorkey=BLACK, scale=SPRITE_SCALE)

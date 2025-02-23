@@ -1,3 +1,5 @@
+from debug import *
+
 #--- Global constants ---
 try:
     import pygame
@@ -5,6 +7,9 @@ try:
 except:
     print("No PyGame installation found!")
 
+# scales
+SPRITE_SCALE = 2
+LIVES_SPRITE_SCALE = 3
 
 # screen/maze object dimensions
 BORDERTHICKNESS = 20
@@ -25,6 +30,10 @@ SCREEN_WIDTH = BORDERTHICKNESS*2 + WALLTHICKNESS*2 + MAZE_WIDTH
 SCREEN_HEIGHT = BORDERTHICKNESS*3 + WALLTHICKNESS*3 + MAZE_HEIGHT
 MAZE_CENTERX = MAZE_XMIN + int(MAZE_WIDTH/2)
 MAZE_CENTERY = MAZE_YMIN + int(MAZE_HEIGHT/2)
+
+Debug.print("# MAZE_XMIN, YMIN = ", MAZE_XMIN, ', ', MAZE_XMIN)
+Debug.print("# MAZE_XMAX, YMAX = ", MAZE_XMAX, ', ', MAZE_XMAX)
+Debug.print("# SCREEN_WIDTH, HEIGHT  = ", SCREEN_WIDTH, ', ', SCREEN_HEIGHT)
 
 
 # color constants

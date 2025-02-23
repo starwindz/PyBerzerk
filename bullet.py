@@ -15,7 +15,7 @@ class Bullet(AnimateObj):
             Bullet.bulletcnt -= 1
             return super(Bullet, cls).__new__(cls)
 
-    def __init__(self, color, direction, x, y, filename, speed=16, count=1, colorkey=BLACK, scale=2):
+    def __init__(self, color, direction, x, y, filename, speed=16, count=1, colorkey=BLACK, scale=SPRITE_SCALE):
         super(Bullet, self).__init__()
         ss = spritesheet.spritesheet(filename)
 

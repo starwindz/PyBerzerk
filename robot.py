@@ -61,7 +61,7 @@ class Robot(AnimateObj):
                 pass
 
 
-    def __init__(self, color, cbRobot, player, grid, pillars, walls, imagefiles, rect, count, frame = 5, colorkey=BLACK, scale=2):
+    def __init__(self, color, cbRobot, player, grid, pillars, walls, imagefiles, rect, count, frame = 5, colorkey=BLACK, scale=SPRITE_SCALE):
         super(Robot,self).__init__()
         ss = spritesheet.spritesheet(imagefiles['robot'])
         self.images =  ss.load_strip(rect, count, colorkey)
@@ -107,15 +107,18 @@ class Robot(AnimateObj):
         self.rect.height *= 2
         while True:
             # make sure rect in boundry
-            rx = random.randrange(1,38)
-            ry = random.randrange(1,21)
+            rx = random.randrange(1,38)  # 40 -> 0 to 39 -> 1 to 38
+            ry = random.randrange(1,19)  # 21 -> 0 to 20 -> 1 to 19
 
             # make sure robot not on wall
-            if rx in (7,8,15,16,23,24,31,32):
+            if rx in (7,8, 15,16, 23,24, 31,32): # 8-1, 16-1, 24-1, 32-1  and  8, 16, 24, 32
                 continue
-            if ry in (6,7,14,15):
+            if ry in (6,7, 13,14): # 7-1, 14-1  and  7, 14
                 continue
             x,y = grid.getScreenCoor(rx, ry)
+            # Debug.print('# (rx, ry), (x, y) = ', '(', rx, ', ', ry, '), ' , '(', x, ',' , y, ')')
+            # x = MAZE_XMIN-4 + rx*16 (28-4 + rx*16)
+            # y = MAZE_YMIN+8 + ry*22 (28+8 + ry*22)
 
             cell = grid.getCell(rx,ry)
             if cell.reachable == False:
@@ -341,11 +344,11 @@ class Robot(AnimateObj):
         pass
 
 class RobotBullet(Bullet):
-    def __init__(self, color, direction, x, y, filename, speed=8, count=1, colorkey=None, scale=2):
-        super(RobotBullet,self).__init__(color, direction, x, y, filename, speed=4, count=1, colorkey=BLACK, scale=2)
+    def __init__(self, color, direction, x, y, filename, speed=8, count=1, colorkey=None, scale=SPRITE_SCALE):
+        super(RobotBullet,self).__init__(color, direction, x, y, filename, speed=4, count=1, colorkey=BLACK, scale=SPRITE_SCALE)
 
 class RobotExplode(AnimateObj):
-    def __init__(self, robot, cbExplode, filename, rect, count, colorkey=BLACK, scale=2):
+    def __init__(self, robot, cbExplode, filename, rect, count, colorkey=BLACK, scale=SPRITE_SCALE):
         super(RobotExplode,self).__init__(cbExplode)
         ss = spritesheet.spritesheet(filename)
         self.images =  ss.load_strip(rect, count, colorkey)

@@ -8,7 +8,7 @@ import time
 import math
 
 class Otto(AnimateObj):
-    def __init__(self, color, player, filename, rect, count, colorkey=BLACK, scale=2):
+    def __init__(self, color, player, filename, rect, count, colorkey=BLACK, scale=SPRITE_SCALE):
         super(Otto ,self).__init__(self.ottocb)
         ss = spritesheet.spritesheet(filename)
         self.images =  ss.load_strip(rect, count, colorkey)

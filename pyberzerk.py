@@ -1,4 +1,5 @@
-__author__ = 'TerryO'
+#__author__ = 'TerryO'
+__author__ = 'starwindz'  # current developer
 
 
 import sys, os, platform, pygame
@@ -111,6 +112,7 @@ class GameState:
                 break
 
         self.game.run(color, fire, frameupdate)
+        Debug.print('# run...')
 
         gamestate = "Play"
         if self.game.lives <= 0:
@@ -140,7 +142,8 @@ class Game:
         self.shotflg = False
         self.keycnt = 0
         self.movdir = 0
-        self.maze = Maze(0x53,0x31)   # starting room X,Y
+        self.maze = Maze(83, 49) # (0x53,0x31), starting room X,Y -> a kind of random seed for generating maze
+        Debug.print('# maze initialized')
         self.mazeexit = None
         self.lives = MAX_LIVES
         self.bonuspts = None
@@ -425,7 +428,8 @@ class Game:
 
         globals.arenaCnt += 1
         self.Arena(screen,self.maze,levelcolor)
-        grid = Grid(40, 22, self.maze.pillars)
+        grid = Grid(40, 21, self.maze.pillars)  # 22 has been changed to 21
+        Debug.print('# grid initialized')
         # sound.playRobotVoice(random.randrange(0, 14))
         Debug.print('# player entered room');
 

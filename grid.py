@@ -2,6 +2,7 @@ import sys, os, pygame
 from pygame.locals import *
 import heapq
 from config import *
+from debug import *
 
 class Cell(object):
     def __init__(self, x, y, reachable):
@@ -42,9 +43,11 @@ class Grid(object):
         self.walls = walls
         self.gridcells = []
         self.wallcells = []
+        
+        Debug.print('# grid width, height = ', width, ', ', height)
 
-        for x in range(width):       # 0-39
-            for y in range(height):   # 0-21
+        for x in range(width):        # 0-39
+            for y in range(height):   # 0-20
                 self.gridcells.append(Cell(x,y,True))
 
         for i, w in list(enumerate(walls[:])):
@@ -54,7 +57,7 @@ class Grid(object):
                 x = (8,16,24,32)[i%4]
                 #print( "N", list(range(int(i/4)*int(height/rows),int(i/4)*int(height/rows)+int(height/rows)+1)))
                 #for y in list(range(int(i/4)*int(height/rows),int(i/4)*int(height/rows)+int(height/rows)+1)):
-                for y in {0:(0,1,2,3,4,5,6),1:(6,7,8,9,10,11,12,13,14)}[int(i/4)]:
+                for y in {0:(0,1,2,3,4,5,6),1:(6, 7,8,9,10,11,12,13, 14)}[int(i/4)]:
                     cell = self.gridcells[x * self.height + y]
                     cell.reachable = False
                     self.wallcells.append((x,y))
@@ -62,7 +65,8 @@ class Grid(object):
                 #for x in {0:(7,8),1:(15,16),2:(23,24),3:(31,32)}[i%4]:
                 x = (8,16,24,32)[i%4]
                 #x = list(range(int(width/cols),width,int(width/cols)))[i%4]
-                for y in {0:(6,7,8,9,10,11,12,13,14),1:(14,15,16,17,18,19,20,21)}[int(i/4)]:
+                #for y in {0:(6, 7,8,9,10,11,12,13, 14),1:(14,15,16,17,18,19,20, 21)}[int(i/4)]:
+                for y in {0:(6, 7,8,9,10,11,12,13, 14),1:(14,15,16,17,18,19,20)}[int(i/4)]:
                 #print( "S", list(range(int(height/rows)-1 + int(i/4)*int(height/rows),((int(i/4)+2)*int(height/rows) + 1 ))))
                 #for y in list(range(int(height/rows)-1 + int(i/4)*int(height/rows),((int(i/4)+2)*int(height/rows) + 1))):
                     cell = self.gridcells[x * self.height + y]
@@ -76,13 +80,13 @@ class Grid(object):
                     #x += int(width/cols)*((i%4)+1)
                     #if x >= width:
                         #break
-                for x in {0:(8,9,10,11,12,13,14,15,16),1:(16,17,18,19,20,21,22,23,24),2:(24,25,26,27,28,29,30,31,32),3:(32,33,34,35,36,37,38,39)}[i%4]:
+                for x in {0:(8,9,10,11,12,13,14,15, 16),1:(16,17,18,19,20,21,22,23, 24),2:(24,25,26,27,28,29,30,31, 32),3:(32,33,34,35,36,37,38,39)}[i%4]:
                     cell = self.gridcells[x * self.height + y]
                     cell.reachable = False
                     self.wallcells.append((x,y))
             elif w == "W":
                 y = (6,14)[int(i/4)]
-                for x in {0:(0,1,2,3,4,5,6,7,8),1:(8,9,10,11,12,13,14,15,16),2:(16,17,18,19,20,21,22,23,24),3:(24,25,26,27,28,29,30,31,32)}[i%4]:
+                for x in {0:(0,1,2,3,4,5,6,7, 8),1:(8,9,10,11,12,13,14,15, 16),2:(16,17,18,19,20,21,22,23, 24),3:(24,25,26,27,28,29,30,31, 32)}[i%4]:
                 #for x in list(range(int(width/cols)+2)):
                     #x += int(width/cols)*(i%4)
                     cell = self.gridcells[x * self.height + y]

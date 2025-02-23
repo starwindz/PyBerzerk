@@ -3,7 +3,7 @@ from config import *
 from animateobj import *
 
 class Lives(pygame.sprite.Sprite):
-    def __init__(self, life, filename, rect, color, colorkey=BLACK, scale=3):
+    def __init__(self, life, filename, rect, color, colorkey=BLACK, scale=LIVES_SPRITE_SCALE):
         super(Lives,self).__init__()
         ss = spritesheet.spritesheet(filename)
         image =  ss.image_at(rect)

@@ -1,0 +1,22 @@
+class Grid
+  def __init__(self, width, height, walls, cols=5, rows=3)
+
+  def getScreenCoor(self,x,y)
+
+
+class Game
+  def __init__()
+    self.maze = Maze(83, 49)
+
+  def Arena(self, screen, maze, doorcolor=None)
+    pillars = maze.getPillars()
+
+  def run
+    self.Arena(screen,self.maze,levelcolor)
+    grid = Grid(40, 21, self.maze.pillars)
+
+
+class GameState
+  def Play
+    self.game.run(color, fire, frameupdate)
+

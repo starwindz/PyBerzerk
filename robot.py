@@ -107,8 +107,8 @@ class Robot(AnimateObj):
         self.rect.height *= 2
         while True:
             # make sure rect in boundry
-            rx = random.randrange(1,38)  # 40 -> 0 to 39 -> 1 to 38
-            ry = random.randrange(1,19)  # 21 -> 0 to 20 -> 1 to 19
+            rx = random.randrange(1, GRID_WIDTH - 1)  # 40 -> 0 to 39 -> 1 to 38
+            ry = random.randrange(1, GRID_HEIGHT - 1)  # 21 -> 0 to 20 -> 1 to 19
 
             # make sure robot not on wall
             if rx in (7,8, 15,16, 23,24, 31,32): # 8-1, 16-1, 24-1, 32-1  and  8, 16, 24, 32

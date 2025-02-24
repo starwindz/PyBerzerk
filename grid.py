@@ -46,8 +46,8 @@ class Grid(object):
         
         Debug.print('# grid width, height = ', width, ', ', height)
 
-        for x in range(width):        # 0-39
-            for y in range(height):   # 0-20
+        for x in range(width):        # 0 - 39 (40)
+            for y in range(height):   # 0 - 20 (21)
                 self.gridcells.append(Cell(x,y,True))
 
         for i, w in list(enumerate(walls[:])):
@@ -173,14 +173,14 @@ class AStar(object):
                 self.cells.append(Cell(x, y, reachable))                
         
         #print('init_grid: start = ', start)
-        if start[0] >= 40:
+        if start[0] >= GRID_WIDTH:
             # print('reset start.x to 0')
             self.start = self.get_cell(0, start[1])
         else:
             self.start = self.get_cell(*start)
            
         #print('init_grid: end = ', end)
-        if end[0] >= 40:
+        if end[0] >= GRID_WIDTH:
             # print('reset end.x to 0')
             self.end = self.get_cell(0, end[1])
         else:

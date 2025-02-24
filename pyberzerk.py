@@ -428,7 +428,7 @@ class Game:
 
         globals.arenaCnt += 1
         self.Arena(screen,self.maze,levelcolor)
-        grid = Grid(40, 21, self.maze.pillars)  # 22 has been changed to 21
+        grid = Grid(GRID_WIDTH, GRID_HEIGHT, self.maze.pillars)  # 22 has been changed to 21
         Debug.print('# grid initialized')
         # sound.playRobotVoice(random.randrange(0, 14))
         Debug.print('# player entered room');

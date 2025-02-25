@@ -23,8 +23,8 @@ class Cell(object):
         self.h = 0
         self.f = 0
 
-        self.screenX = MAZE_XMIN-4 + x*16
-        self.screenY = MAZE_YMIN+8 + y*22
+        self.screenX = MAZE_XMIN-4 + x*CELL_WIDTH
+        self.screenY = MAZE_YMIN+8 + y*CELL_HEIGHT
         
     def __lt__(self, other):
         return self.f < other.f

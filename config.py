@@ -11,15 +11,23 @@ except:
 SPRITE_SCALE = 2
 LIVES_SPRITE_SCALE = 3
 
-# global settings for screen/maze
-GRID_WIDTH = 40
-GRID_HEIGHT = 21
+# cell size
+'''
+the w x h of the robot sprite is 8 x 11. 
+the w x h of the cell appear to be twice that, 16 x 22. (same size)
+'''
+CELL_WIDTH  = 16
+CELL_HEIGHT = 22
+
+# grid size
+GRID_WIDTH  = 8 * 5       # 40
+GRID_HEIGHT = 7 * 3 + 1   # 22
 
 # screen/maze object dimensions
 BORDERTHICKNESS = 20
 WALLTHICKNESS = 8
-MAZE_WIDTH = GRID_WIDTH * 16 # 640
-MAZE_HEIGHT = GRID_HEIGHT * 22 # 462 (original value of PyBerzerk is 480)
+MAZE_WIDTH  = GRID_WIDTH  * CELL_WIDTH   # 640  <- needs to be checked
+MAZE_HEIGHT = GRID_HEIGHT * CELL_HEIGHT  # 480  <- needs to be checked, especially for collision of robots at bottom line
 MAZE_XMIN = BORDERTHICKNESS + WALLTHICKNESS
 MAZE_YMIN = BORDERTHICKNESS + WALLTHICKNESS
 MAZE_XMAX = MAZE_XMIN + MAZE_WIDTH

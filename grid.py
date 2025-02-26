@@ -47,7 +47,7 @@ class Grid(object):
         Debug.print('# grid width, height = ', width, ', ', height)
 
         for x in range(width):        # 0 - 39 (40)
-            for y in range(height):   # 0 - 20 (21)
+            for y in range(height):   # 0 - 21 (22)
                 self.gridcells.append(Cell(x,y,True))
 
         for i, w in list(enumerate(walls[:])):
@@ -230,7 +230,6 @@ class AStar(object):
             cell = cell.parent
             if cell is None:
                 pass
-                #continue
             path.append((cell.x, cell.y))
 
         path.append((self.start.x, self.start.y))

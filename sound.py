@@ -91,7 +91,8 @@ class WavePlay:
             stream.close()
             wf.close()
 
-        threading.Thread(target=stream_audio, daemon=True).start()        
+        if DEBUG_MUTE_SOUND == False:
+            threading.Thread(target=stream_audio, daemon=True).start()        
  
     def close(self):
         """Terminate the PyAudio instance."""

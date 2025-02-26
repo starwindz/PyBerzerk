@@ -33,8 +33,8 @@ GRID_HEIGHT = 7 * 3 + 1   # 22
 # screen/maze object dimensions
 BORDERTHICKNESS = 20
 WALLTHICKNESS = 8
-MAZE_WIDTH  = GRID_WIDTH  * CELL_WIDTH   # 640  <- needs to be checked
-MAZE_HEIGHT = GRID_HEIGHT * CELL_HEIGHT  # 480  <- needs to be checked, especially for collision of robots at bottom line
+MAZE_WIDTH  = GRID_WIDTH  * CELL_WIDTH   # original: 640
+MAZE_HEIGHT = GRID_HEIGHT * CELL_HEIGHT  # original: 480
 MAZE_XMIN = BORDERTHICKNESS + WALLTHICKNESS
 MAZE_YMIN = BORDERTHICKNESS + WALLTHICKNESS
 MAZE_XMAX = MAZE_XMIN + MAZE_WIDTH

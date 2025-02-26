@@ -458,7 +458,12 @@ class Game:
 
         # set timer event for Otto
         # pygame.time.set_timer(SPAWN_OTTO,1500*Robot.robotcnt) # 1.5sec/robot
-        pygame.time.set_timer(SPAWN_OTTO,1750*Robot.robotcnt) # 1.75sec/robot
+        if DEBUG_HIDE_OTTO == True:
+            ottoSpawnTime = 100000
+        else:
+            ottoSpawnTime = 2000
+        
+        pygame.time.set_timer(SPAWN_OTTO,ottoSpawnTime*Robot.robotcnt) # 1.75sec/robot
 
         # set timer event for robot movement
         pygame.time.set_timer(ROBOT_ACTIVE,3000) # 3sec
@@ -508,7 +513,8 @@ class Game:
         # update sprites
         self.sprites.update()
 
-        # debugAIgrid()
+        if DEBUG_ROBOT_AI == True:
+            self.debugAIgrid()
 
         # redraw sprites
         dirty = self.sprites.draw(screen)

@@ -66,7 +66,7 @@ class Grid(object):
                 x = (8,16,24,32)[i%4]
                 #x = list(range(int(width/cols),width,int(width/cols)))[i%4]
                 #for y in {0:(6, 7,8,9,10,11,12,13, 14),1:(14,15,16,17,18,19,20, 21)}[int(i/4)]:
-                for y in {0:(6, 7,8,9,10,11,12,13, 14),1:(14,15,16,17,18,19,20)}[int(i/4)]:
+                for y in {0:(6, 7,8,9,10,11,12,13, 14),1:(14,15,16,17,18,19,20, 21)}[int(i/4)]:
                 #print( "S", list(range(int(height/rows)-1 + int(i/4)*int(height/rows),((int(i/4)+2)*int(height/rows) + 1 ))))
                 #for y in list(range(int(height/rows)-1 + int(i/4)*int(height/rows),((int(i/4)+2)*int(height/rows) + 1))):
                     cell = self.gridcells[x * self.height + y]
@@ -100,7 +100,7 @@ class Grid(object):
         return cell.screenX, cell.screenY
 
     def getCellCoor(self,x,y):
-        return (x - (MAZE_XMIN-4))/16, (y - (MAZE_YMIN+8))/22
+        return (x - (MAZE_XMIN-4))/CELL_WIDTH, (y - (MAZE_YMIN+8))/CELL_HEIGHT
 
     def getCell(self,x,y):
         return self.gridcells[int(x) * self.height + int(y)]

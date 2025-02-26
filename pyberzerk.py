@@ -522,9 +522,9 @@ class Game:
 
     def debugAIgrid(self):
         # debug code for robot AI grid
-        for x in range(MAZE_XMIN-4,MAZE_XMAX+16,16):
+        for x in range(MAZE_XMIN-4,MAZE_XMAX+16, CELL_WIDTH):
         #for x in range(MAZE_XMIN, MAZE_XMAX,24):
-            for y in range(MAZE_YMIN+8,MAZE_YMAX ,22):
+            for y in range(MAZE_YMIN+8,MAZE_YMAX, CELL_HEIGHT):
             #for y in range(MAZE_YMIN, MAZE_YMAX,24):
                 pygame.draw.line(screen, RED, (x, y), (MAZE_XMAX, y), (1))
                 pygame.draw.line(screen, RED, (x, y), (x, MAZE_YMAX), (1))

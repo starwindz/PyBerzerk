@@ -11,13 +11,20 @@ except:
 SPRITE_SCALE = 2
 LIVES_SPRITE_SCALE = 3
 
+# screen scale
+NEW_SCREEN_SIZE = True
+
 # cell size
 '''
 the w x h of the robot sprite is 8 x 11. 
 the w x h of the cell appear to be twice that, 16 x 22. (same size)
 '''
-CELL_WIDTH  = 16
-CELL_HEIGHT = 22
+if NEW_SCREEN_SIZE == True:
+    CELL_WIDTH  = 16
+    CELL_HEIGHT = 22
+else:
+    CELL_WIDTH  = 16 - 4
+    CELL_HEIGHT = 22 - 4    
 
 # grid size
 GRID_WIDTH  = 8 * 5       # 40

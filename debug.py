@@ -7,5 +7,5 @@ class Debug():
             
 DEBUG_PRINT_MODE = True
 DEBUG_ROBOT_AI = False
-DEBUG_HIDE_OTTO = True
+DEBUG_HIDE_OTTO = False
 DEBUG_MUTE_SOUND = False

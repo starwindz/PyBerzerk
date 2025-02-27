@@ -3,7 +3,7 @@ import wave
 import threading
 import io
 import numpy as np
-import keyboard
+# import keyboard
 import time
 import random
 from utils import *

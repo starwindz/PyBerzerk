@@ -23,9 +23,7 @@ Before running the game, please make sure you have [Python v3.x](http://www.pyth
 And following modules need to be installed.
 - PyGame: `pip install pygame`
 - PyAudio: `pip install pyaudio`
-- Wave: `pip install wave`
 - NumPy: `pip install numpy`
-- Keyboard: `pip install keyboard`
 
 **HOW TO RUN:**
 - `python pyberzerk.py`

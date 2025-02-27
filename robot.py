@@ -190,6 +190,7 @@ class Robot(AnimateObj):
 
             deltaX, deltaY = 0,0
 
+            collisionDanger = False
             if self.active:
                 rx, ry = self.grid.getCellCoor(self.rect.x, self.rect.y)
                 if rx == self.cellX and ry == self.cellY:
@@ -201,24 +202,45 @@ class Robot(AnimateObj):
 
                         if path is not None:
                             rx,ry = path.pop(1)
-                            self.cellX = rx
-                            self.cellY = ry
+
+                            # related code for robot to near robot collision detection
+                            for rb in Robot.getGroup():
+                                if rb != self:
+                                    [rx1, ry1] = self.grid.getScreenCoor(rx, ry)
+                                    [rx2, ry2] = [rx1 + rb.rect.width, ry1 + rb.rect.height]
+                                    [x1, y1, x2, y2] = [rb.rect.x, rb.rect.y, rb.rect.x + rb.rect.width, rb.rect.y + rb.rect.height]
+                                    [x1, y1, x2, y2] = [x1 - 4, y1 - 4, x2 + 4, y2 + 4]
+
+                                    if (rx1 <= x1 <= rx2 and ry1 <= y1 <= ry2) or (rx1 <= x2 <= rx2 and ry1 <= y2 <= ry2):
+                                        Debug.print('# collision danger A: ') # , x1, y1, x2, y2, ' ', rx1, ry1, rx2, ry2)
+                                        collisionDanger = True
+                                        break
+
+                                    if (x1 <= rx1 <= x2 and y1 <= ry1 <= y2) or (x1 <= rx2 <= x2 and y1 <= ry2 <= y2):
+                                        Debug.print('# collision danger B: ') # , x1, y1, x2, y2, ' ', rx1, ry1, rx2, ry2)
+                                        collisionDanger = True
+                                        break
+
+                            if collisionDanger == False:
+                                self.cellX = rx
+                                self.cellY = ry
 
                         del maze
                 else:
                     rx = self.cellX
                     ry = self.cellY
 
-                rx,ry = self.grid.getScreenCoor(rx, ry)
-                waypoint = complex(rx,ry)
-                robot = complex(self.rect.x, self.rect.y)
-                cc = waypoint - robot
+                if collisionDanger == False:
+                    rx,ry = self.grid.getScreenCoor(rx, ry)
+                    waypoint = complex(rx,ry)
+                    robot = complex(self.rect.x, self.rect.y)
+                    cc = waypoint - robot
 
-                sign = lambda x: (x > 0) - (x < 0)
-                deltaX = sign(int(cc.real))*2
-                self.rect.x += deltaX
-                deltaY = sign(int(cc.imag))*2
-                self.rect.y += deltaY
+                    sign = lambda x: (x > 0) - (x < 0)
+                    deltaX = sign(int(cc.real))*2
+                    self.rect.x += deltaX
+                    deltaY = sign(int(cc.imag))*2
+                    self.rect.y += deltaY
 
             pattern = "roving_eye"
             if (deltaX == 0) & (deltaY == 0):
